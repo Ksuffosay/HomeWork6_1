@@ -5,7 +5,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
-public class HomeWork {
+public class HomeWork6_project {
 
     public static void main(String[] args) throws IOException {
 
