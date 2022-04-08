@@ -4,30 +4,19 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class HomeWork6_project {
 
     public static void main(String[] args) throws IOException {
 
-        OkHttpClient okHttpClient = new OkHttpClient();
+        Scanner sc = new Scanner(System.in);
+        String cityName = sc.nextLine();
 
-        HttpUrl httpUrl = new HttpUrl.Builder()
-                .scheme("http")
-                .host("dataservice.accuweather.com")
-                .addPathSegment("forecasts")
-                .addPathSegment("v1")
-                .addPathSegment("daily")
-                .addPathSegment("5day")
-                .addPathSegment("332633")
-                .addQueryParameter("apikey","I4PfS6pRjHfLN4O9DW4bNXX7O7d0in2o")
-                .build();
-
-        Request request = new Request.Builder()
-                .url(httpUrl)
-                .build();
-
-        Response response = okHttpClient.newCall(request).execute();
-        System.out.println(response.body().string());
+        String cityId = RequestSender.getCityId(cityName);
+        System.out.println(cityId);
+        System.out.println(RequestSender.getData(cityId));
+        System.out.println(RequestSender.getTempMinAndMaxTemp(cityId));
 
 
     }
